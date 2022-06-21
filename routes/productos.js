@@ -33,17 +33,27 @@ router.get('/:id?', (req, res) => {
 
 });
 
+router.get('/edit/:id', (req, res) => {
+    const admin = req.headers.admin
+    const id = req.params.id
+    const result = prod.getIdProduct(id)
+    res.render('editproduct.ejs', { result, admin })
 
+});
 
-router.put('/:id', (req, res) => {
+router.put('/edit/:id', (req, res) => {
+    console.log(req.body)
+    console.log(req.params.id)
     if (req.headers.admin === 'false') {
         return res.end(`{ error : -1, descripcion: ruta "${req.params[0]}" metodo "${req.method}" no no autorizada}`)
     } else {
         const newProd = req.body
         const id = req.params.id
-        res.send(prod.editProduct(id, newProd))
+        const admin = req.headers.admin
+        prod.editProduct(id, newProd)
+        const result = prod.getProduct()
+        res.render('products.ejs', { result, admin})
     }
-
 })
 
 router.delete('/:id', (req, res) => {

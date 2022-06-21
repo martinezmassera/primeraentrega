@@ -6,6 +6,12 @@ class Prods {
         this.products = []
     }
 
+    getProduct() {
+      
+            return this.products
+
+    }
+
     getIdProduct(id) {
         if (id) {
             return this.products.filter(prod => prod.id == id)
@@ -24,6 +30,8 @@ class Prods {
     editProduct(id, product) {
         const index = this.products.findIndex(index => index.id == id);
         console.log(index)
+        product['id'] = id;
+        console.log(product)
         this.products.splice(index, 1, product);
         return this.products
     }

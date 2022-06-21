@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="/CSS/style.css">
+</head>
+
+<body>
+    <div class="container">
+       
+        <div class="row">
+            <div class="col-md-6">
+                <form id="form">
+                    <% result.forEach(element=> { %>
+                        <input id="prodId" name="prodId" type="hidden" value="<%= element.id %>">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Title</label>
+                            <input type="text" value="<%= element.title %>" class="form-control" id="name" name="name"
+                                aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Price</label>
+                            <input type="number" class="form-control" id="price" value="<%= element.price %>"
+                                name="price" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="thumbnail" class="form-label">thumbnail - predeterminado</label>
+                            <% if(
+                                element.thumbnail==='https://cdn3.iconfinder.com/data/icons/logos-brands-3/24/logo_brand_brands_logos_word-128.png'
+                                ){ %>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="word"
+                                        checked value="https://cdn3.iconfinder.com/data/icons/logos-brands-3/24/logo_brand_brands_logos_word-128.png">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Word
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="ai">
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Ai
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="google"
+                                        checked>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Google
+                                    </label>
+                                </div>
+                                <% } else
+                                    if(element.thumbnail==='https://cdn3.iconfinder.com/data/icons/logos-brands-3/24/logo_brand_brands_logos_adobe_illustrator-128.png'
+                                    ){ %>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="word">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                            Word
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="ai"
+                                            checked>
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                            Ai
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="google"
+                                            checked>
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                            Google
+                                        </label>
+                                    </div>
+                                    <% } else
+                                        if(element.thumbnail==='https://cdn3.iconfinder.com/data/icons/logos-brands-3/24/logo_brand_brands_logos_google-128.png'
+                                        ){ %>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                id="word">
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                Word
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                id="ai">
+                                            <label class="form-check-label" for="flexRadioDefault2">
+                                                Ai
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                id="google" checked>
+                                            <label class="form-check-label" for="flexRadioDefault2">
+                                                Google
+                                            </label>
+                                        </div>
+                                        <% } %>
+                        </div>
+                        <input type="submit" value="Edit" id="load" class="btn btn-primary">
+                        <% }); %>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- BOOTSTRAP 5 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+
+    <script>
+        const btn = document.getElementById('load')
+        
+        btn.onclick = e => {
+         const id =  document.getElementById('prodId').value
+         var valor = '';
+            if (document.getElementById('word').checked) {
+                valor = 'https://cdn3.iconfinder.com/data/icons/logos-brands-3/24/logo_brand_brands_logos_word-128.png'
+            } else if (document.getElementById('ai').checked) {
+                valor = 'https://cdn3.iconfinder.com/data/icons/logos-brands-3/24/logo_brand_brands_logos_adobe_illustrator-128.png'
+            } else if (document.getElementById('google').checked) {
+                valor = 'https://cdn3.iconfinder.com/data/icons/logos-brands-3/24/logo_brand_brands_logos_google-128.png'
+            }
+            const edits = {
+                id: id,
+                title: document.getElementById('name').value,
+                price: document.getElementById('price').value,
+                thumbnail: valor
+            }
+            
+            console.log(e)
+            e.preventDefault();
+            fetch('/api/products/edit/'+ id, {
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(edits)
+            })
+                .then(response => {
+                    console.log(response)
+                })
+                .then(data => {
+                        window.location = '/api/products';})
+            .catch (e => alert(e))
+        }
+
+    </script>
+
+</body>
+
+</html>
