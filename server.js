@@ -12,9 +12,9 @@ const cart = require('./routes/carrito');
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
 
-app.use('/api/products', products);
+app.use('/productos', products);
 
-app.use('/api/cart', cart);
+app.use('/carrito', cart);
 
 app.use('*', (req, res)=>{
     res.end(`{ error : -2, descripcion: ruta "${req.params[0]}" metodo "${req.method}" no implementada}`)

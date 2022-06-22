@@ -141,7 +141,7 @@
             
             console.log(e)
             e.preventDefault();
-            fetch('/api/products/edit/'+ id, {
+            fetch('/productos/edit/'+ id, {
                 method: 'PUT',
                 headers: {
                     'Accept': 'application/json',
@@ -153,7 +153,7 @@
                     console.log(response)
                 })
                 .then(data => {
-                        window.location = '/api/products';})
+                        window.location = '/productos';})
             .catch (e => alert(e))
         }
 

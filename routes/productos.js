@@ -1,7 +1,10 @@
 const { Router } = require('express');
 const express = require('express')
 const Prods = require('../containers/products');
+const Cart = require('../containers/cart');
 const prod = new Prods()
+const cart = new Cart()
+
 const router = Router();
 
 
@@ -29,6 +32,7 @@ router.get('/:id?', (req, res) => {
     const admin = req.headers.admin
     const id = req.params.id
     const result = prod.getIdProduct(id)
+    cart.createCart()
     res.render('products.ejs', { result, admin })
 
 });

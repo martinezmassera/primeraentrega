@@ -7,10 +7,12 @@ const router = Router();
 router.use(express.json())
 router.use(express.urlencoded({ extended: true }))
 
+router.get('/', (req, res)=>{
 
+})
 router.post('/', (req, res) => {
     let cart = veta.createCart()
-    return res.send(cart)
+    return res.end(cart)
     
 })
 

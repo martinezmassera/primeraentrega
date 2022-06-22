@@ -80,7 +80,7 @@
             console.log(document.getElementById('name').value)
             console.log(edits)
             e.preventDefault();
-            fetch('/api/products/add', {
+            fetch('/productos/add', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -92,7 +92,7 @@
                     console.log(response)
                 })
                 .then(data => {
-                    window.location = '/api/products';
+                    window.location = '/productos';
                 })
                 .catch(e => alert(e))
         }

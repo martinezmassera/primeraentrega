@@ -23,10 +23,10 @@ class Cart {
     }
 
     addproductsCart(idCart, product) {
-        let cart = this.carts.find(c => c.id == idCart)
-        cart.products.push(product)
-        console.log(cart)
-        return cart
+            let cart = this.carts.find(c => c.id == idCart)
+            cart.products.push(product)
+            console.log(cart)
+            return cart
     }
 
     deleteCart(id) {
