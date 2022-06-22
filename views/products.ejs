@@ -11,9 +11,16 @@
 </head>
 
 <body>
+    <div>
+        <input type="radio" id="hide" name="admin" value="hide" checked />
+        <label for="hide">User</label>
+        <input type="radio" id="show" name="admin" value="show" />
+        <label for="show">Admin</label>
+    </div>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar w/ text</a>
+            <a class="navbar-brand" href="#"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -23,25 +30,19 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/productos">Productos</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item edit" style="display: none;">
                         <a class="nav-link" href="/productos/add">addProductos</a>
                     </li>
 
                 </ul>
                 <span class="navbar-text">
-                    <a href="/cart">Cart</a>
+                    <a href="/carrito">Cart</a>
                 </span>
             </div>
         </div>
     </nav>
     <div class="container m-5">
-        <div>
-            <input type="radio" id="hide" name="admin" value="hide" checked />
-            <label for="hide">User</label>
-            <input type="radio" id="show" name="admin" value="show" />
-            <label for="show">Admin</label>
-        </div>
-
+       
 
         <div class="row text-center">
             <% result.forEach(element=> { %>
@@ -100,7 +101,7 @@
                             'Accept': 'application/json',
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify({id})
+                        body: JSON.stringify({ id })
                     })
                         .then(response => {
                             console.log(response)
@@ -109,10 +110,7 @@
                 }
             }
         }
-
-
-
-
+       
     </script>
 
 

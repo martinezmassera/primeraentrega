@@ -8,11 +8,11 @@ router.use(express.json())
 router.use(express.urlencoded({ extended: true }))
 
 router.get('/', (req, res)=>{
-
+    res.send(veta.getCart())
 })
 router.post('/', (req, res) => {
     let cart = veta.createCart()
-    return res.end(cart)
+    return res.send(cart)
     
 })
 

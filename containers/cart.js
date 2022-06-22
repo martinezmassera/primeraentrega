@@ -14,11 +14,13 @@ class Cart {
         this.count_id = 0
     }
 
+    getCart(){
+      return this.carts
+    }
     createCart() {
         this.count_id++
         const cart = new NewCart(this.count_id)
         this.carts.push(cart)
-        console.log(cart)
         return { "id": this.count_id }
     }
 
