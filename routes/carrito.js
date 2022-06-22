@@ -1,14 +1,18 @@
 const { Router } = require('express');
-const express = require('express')
+const express = require('express');
 const Cart = require('../containers/cart');
-const veta = new Cart()
+const veta = new Cart('./cart.json')
+
+
 const router = Router();
 
 router.use(express.json())
 router.use(express.urlencoded({ extended: true }))
 
 router.get('/', (req, res)=>{
-    res.send(veta.getCart())
+  const result = veta.getCart()
+  const admin = 'true'
+  res.render('elcarrito.ejs', {result, admin})
 })
 router.post('/', (req, res) => {
     let cart = veta.createCart()
@@ -29,7 +33,8 @@ router.delete('/:id/products/:id_prod', (req, res)=>{
 
 router.get('/:id/products', (req, res)=>{
     const idCart = req.params.id
-    res.send(veta.getCartProducts(idCart))
+    const result = veta.getCartProducts(idCart);
+    res.render('carts.ejs', result)
 })
 router.post('/:id/products', (req, res) => {
     const idCart = req.params.id

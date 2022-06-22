@@ -1,5 +1,4 @@
 const express = require('express');
-const {Router} = require ('express');
 var favicon = require('serve-favicon');
 var path = require('path');
 
@@ -17,7 +16,12 @@ app.use('/productos', products);
 app.use('/carrito', cart);
 
 app.use('*', (req, res)=>{
-    res.end(`{ error : -2, descripcion: ruta "${req.params[0]}" metodo "${req.method}" no implementada}`)
+  const rout = req.params[0];
+  const method = req.method
+    res.json({
+      "error":-2,
+    "descripción": 'ruta '+ rout + ' metodo '+ method+ ' no implementada'
+     })
   });
 
 app.listen(PORT, () =>{

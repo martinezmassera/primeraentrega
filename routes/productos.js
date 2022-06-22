@@ -1,13 +1,10 @@
 const { Router } = require('express');
 const express = require('express')
 const Prods = require('../containers/products');
-const Cart = require('../containers/cart');
-const prod = new Prods()
-const cart = new Cart()
+const prod = new Prods('./productos.json')
+
 
 const router = Router();
-
-
 
 router.use(express.json())
 router.use(express.urlencoded({ extended: true }))
