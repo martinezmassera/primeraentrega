@@ -54,7 +54,7 @@
                         </p>
                         <div class="edit" style="display: none;">
                             <a class="btn btn-primary" href="/productos/edit/<%= element.id %>">edit</a>
-                            <a class="btn btn-primary" data-id="<%= element.id %>" id="del">delete</a>
+                            <a class="Del btn btn-primary " data-id="<%= element.id %>">delete</a>
                             <a data-id="<%= element.id %>" class="Max btn btn-primary">Add ></a>
                         </div>
                     </div>
@@ -111,21 +111,26 @@
         }
 
 
-        const DEL = document.getElementById('del')
-
-        DEL.onclick = (e) => {
-            const id = e.target.getAttribute('data-id')
-            console.log("A borrar el id ", id)
-            console.log(e)
-            e.preventDefault();
-            fetch('/productos/'+id, { method: 'DELETE' })
-                .then(response => {
-                    console.log(response)
-                })
-                .then(data => {
-                        window.location = '/productos';})
-            .catch (e => alert(e))
-               
+        document.addEventListener("click", myFunction2);
+        function myFunction2() {
+            const del = document.getElementsByClassName('Del');
+            for (const btn of del) {
+             
+            btn.onclick = (e) => {
+                    const id = e.target.getAttribute('data-id')
+                    console.log("A borrar el id ", id)
+                    console.log(e)
+                    e.preventDefault();
+                    fetch('/productos/' + id, { method: 'DELETE' })
+                        .then(response => {
+                            console.log(response)
+                        })
+                        .then(data => {
+                            window.location = '/productos';
+                        })
+                        .catch(e => alert(e))
+                }
+            }
         }
 
     </script>
