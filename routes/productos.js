@@ -16,14 +16,14 @@ router.get('/add', (req, res)=>{
 });
 
 router.post('/add', (req, res) => {
-    if (req.headers.admin === 'false') {
-        return res.end(`{ error : -1, descripcion: ruta "${req.params[0]}" metodo "${req.method}" no no autorizada}`)
-    } else {
+    // if (req.headers.admin === 'false') {
+    //     return res.end(`{ error : -1, descripcion: ruta "${req.params[0]}" metodo "${req.method}" no no autorizada}`)
+    // } else {
         const product = req.body;
         const admin = 'true'
         const result = prod.addProduct(product);
         return res.render('products.ejs', {result, admin})
-    }
+    // }
 })
 
 
