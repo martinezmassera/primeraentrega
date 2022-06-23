@@ -81,11 +81,12 @@
                             <div id="collapse<%= element.id %>" class="accordion-collapse collapse sow"
                                 aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <table class="table">
+                                    <table class="table text-center">
                                         <thead>
                                             <tr>
                                                 <th scope="col">ID</th>
                                                 <th scope="col">TITLE</th>
+                                                <th scope="col">THUMBNAIL</th>
                                                 <th scope="col">THUMBNAIL</th>
                                                 <th scope="col">TIMESTAMP</th>
                                                 <th scope="col">PRICE</th>
@@ -94,22 +95,23 @@
                                         <tbody>
                                             <% element.products.forEach(products=> { %>
                                                 <tr>
-                                                    <th scope="row">
+                                                    <th scope="row" style="vertical-align:middle;">
                                                         <%= products.id %>
                                                     </th>
-                                                    <td>
+                                                    <td  style="vertical-align:middle;">
                                                         <%= products.title %>
                                                     </td>
-                                                    <td>
+                                                    <td  style="vertical-align:middle;">
                                                         <%= products.thumbnail %>
                                                     </td>
-                                                    <td>
+                                                    <td  style="vertical-align:middle;"><img class="img-fluid" src="<%= products.thumbnail %>" alt=""></td>
+                                                    <td  style="vertical-align:middle;">
                                                         <%= products.timestamp %>
                                                     </td>
-                                                    <td>
+                                                    <td  style="vertical-align:middle;">
                                                         <%= products.price %>
                                                     </td>
-                                                    <td>
+                                                    <td  style="vertical-align:middle;">
                                                         <div class="edit" style="display: none;">
                                                             <a class="Del btn btn-primary "
                                                                 data-id-prod="<%= products.id %>"
