@@ -45,8 +45,12 @@ class Cart {
     addproductsCart(idCart, product) {
         const leer = this.getCart()
         const cart = this.carts.find(c => c.id == idCart)
-        cart.products.push(product)
-        this.write()
+        if (!cart) {
+            return 'carrito no encontrado'
+        } else {
+            cart.products.push(product)
+            this.write()
+        }
         return leer
     }
 
@@ -54,16 +58,20 @@ class Cart {
         const leer = this.getCart()
         let cartIndex = leer.findIndex(c => c.id == id)
         let cartgGet = leer.find(c => c.id == id)
-        let dos = cartgGet.products.length
-        cartgGet.products.splice(0, dos + 1)
-        leer.splice(cartIndex, 1);
-        this.write()
+        if (!cartgGet) {
+            return 'carrito no encontrado'
+        } else {
+            let dos = cartgGet.products.length
+            cartgGet.products.splice(0, dos + 1)
+            leer.splice(cartIndex, 1);
+            this.write()
+        }
         return leer
     }
 
     deleteProdCart(idCart, idProd) {
         const leer = this.getCart()
-        let cartGet =leer.find(c => c.id == idCart)
+        let cartGet = leer.find(c => c.id == idCart)
         let prodIndex = cartGet.products.findIndex(c => c.id == idProd)
         cartGet.products.splice(prodIndex, 1)
         this.write()
@@ -72,10 +80,13 @@ class Cart {
 
     getCartProducts(id) {
         const leer = this.getCart()
-        let cart = leer.find(c => c.id == id)
-        console.log(products)
-        return cart.products
+        const cart = leer.find(c => c.id == id)
+        if(!cart){
+            return null
+        }else{
 
+            return [cart]
+        }
     }
 }
 

@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const express = require('express');
 const Cart = require('../containers/cart');
-const veta = new Cart('./cart.json')
+const venta = new Cart('./cart.json')
 
 
 const router = Router();
@@ -9,37 +9,40 @@ const router = Router();
 router.use(express.json())
 router.use(express.urlencoded({ extended: true }))
 
-router.get('/', (req, res)=>{
-  const result = veta.getCart()
-  const admin = 'true'
-  res.render('elcarrito.ejs', {result, admin})
+router.get('/', (req, res) => {
+    const result = venta.getCart()
+    res.render('elcarrito.ejs', { result })
 })
 router.post('/', (req, res) => {
-    let cart = veta.createCart()
+    let cart = venta.createCart()
     return res.send(cart)
-    
-})
-
-router.delete('/:id', (req, res)=>{
-    res.send(veta.deleteCart(req.params.id))
 
 })
 
-router.delete('/:id/products/:id_prod', (req, res)=>{
+router.delete('/:id', (req, res) => {
+    res.send(venta.deleteCart(req.params.id))
+
+})
+
+router.delete('/:id/products/:id_prod', (req, res) => {
     const idCart = req.params.id
     const idProd = req.params.id_prod
-    res.send(veta.deleteProdCart(idCart, idProd))
+    res.send(venta.deleteProdCart(idCart, idProd))
 })
 
-router.get('/:id/products', (req, res)=>{
+router.get('/:id/products', (req, res) => {
     const idCart = req.params.id
-    const result = veta.getCartProducts(idCart);
-    res.render('carts.ejs', result)
+   
+    const result = venta.getCartProducts(idCart);
+    console.log(result)
+    // res.send('ok')
+    res.render('elcarrito.ejs', { result })
 })
+
 router.post('/:id/products', (req, res) => {
     const idCart = req.params.id
     const idProduct = req.body
-    let results = veta.addproductsCart(idCart, idProduct)
+    let results = venta.addproductsCart(idCart, idProduct)
 
     return res.send(results)
 })
