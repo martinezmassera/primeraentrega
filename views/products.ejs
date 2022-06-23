@@ -54,7 +54,7 @@
                         </p>
                         <div class="edit" style="display: none;">
                             <a class="btn btn-primary" href="/productos/edit/<%= element.id %>">edit</a>
-                            <a class="btn btn-primary" id="del">delete</a>
+                            <a class="btn btn-primary" data-id="<%= element.id %>" id="del">delete</a>
                             <a data-id="<%= element.id %>" class="Max add btn-primary">Add ></a>
                         </div>
                     </div>
@@ -112,13 +112,13 @@
 
 
         const DEL = document.getElementById('del')
-        
-        DEL.onclick = e => {
-         const id =  document.getElementById('prodId').value
 
+        DEL.onclick = e => {
+            const id = e.target.getAttribute('data-id')
+            console.log("A borrar el id ", id)
             console.log(e)
             e.preventDefault();
-            fetch('/'+ id, {
+            fetch('/' + id, {
                 method: 'DELETE',
                 headers: {
                     'Accept': 'application/json',
@@ -129,8 +129,9 @@
                     console.log(response)
                 })
                 .then(data => {
-                        window.location = '/productos';})
-            .catch (e => alert(e))
+                    window.location = '/productos';
+                })
+                .catch(e => alert(e))
         }
 
     </script>
