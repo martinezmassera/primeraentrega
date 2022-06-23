@@ -15,6 +15,7 @@ class Cart {
         this.archivo = archivo
         this.carts = []
         this.count_id = 0
+        this.id_prod = 0
     }
 
     write() {
@@ -34,8 +35,12 @@ class Cart {
     }
 
     createCart() {
-        this.count_id++
         const leer = this.getCart()
+        if (leer.length < 1) {
+            this.count_id = 1
+        } else {
+            this.count_id = leer.length + 1
+        }
         const cart = new NewCart(this.count_id)
         this.carts.push(cart)
         this.write()
@@ -48,6 +53,13 @@ class Cart {
         if (!cart) {
             return 'carrito no encontrado'
         } else {
+            if (cart.products.length < 1) {
+                this.id_prod = 1
+            } else {
+                this.id_prod = cart.products.length + 1
+            }
+            product['timestamp'] = new Date().toLocaleString()
+            product['id'] = this.id_prod;
             cart.products.push(product)
             this.write()
         }
@@ -81,9 +93,9 @@ class Cart {
     getCartProducts(id) {
         const leer = this.getCart()
         const cart = leer.find(c => c.id == id)
-        if(!cart){
+        if (!cart) {
             return null
-        }else{
+        } else {
 
             return [cart]
         }

@@ -72,11 +72,7 @@
                                         <td class="p-4 pe-3 ps-0 text-center">
                                             <%= element.timestamp %>
                                         </td>
-                                        <td>
-                                            <div class="edit" style="display: none;"><a class="btn btn-primary"
-                                                    href="/productos/edit/<%= element.id %>">edit</a>
-                                                <a href="/productos" class="Max btn btn-primary">Add ></a></div>
-                                        </td>
+
                     </div>
                     </tr>
                     <tr>
@@ -112,6 +108,13 @@
                                                     </td>
                                                     <td>
                                                         <%= products.price %>
+                                                    </td>
+                                                    <td>
+                                                        <div class="edit" style="display: none;">
+                                                            <a class="Del btn btn-primary "
+                                                                data-id-prod="<%= products.id %>"
+                                                                data-id-cart="<%= element.id %>">delete</a>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                                 <% }); %>
@@ -169,6 +172,29 @@
                     })
                         .then(response => {
                             console.log(response)
+                        })
+                        .catch(e => alert(e))
+                }
+            }
+        }
+
+        document.addEventListener("click", myFunction2);
+        function myFunction2() {
+            const del = document.getElementsByClassName('Del');
+            for (const btn of del) {
+
+                btn.onclick = (e) => {
+                    const id_cart = e.target.getAttribute('data-id-cart')
+                    const id_prod = e.target.getAttribute('data-id-prod')
+                    console.log("A borrar el id ", id_cart, "el prod", id_prod)
+                    console.log(e)
+                    e.preventDefault();
+                    fetch('/carrito/' + id_cart + '/products/' + id_prod, { method: 'DELETE' })
+                        .then(response => {
+                            console.log(response)
+                        })
+                        .then(data => {
+                            window.location = '/carrito';
                         })
                         .catch(e => alert(e))
                 }

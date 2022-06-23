@@ -34,8 +34,6 @@ router.get('/:id/products', (req, res) => {
     const idCart = req.params.id
    
     const result = venta.getCartProducts(idCart);
-    console.log(result)
-    // res.send('ok')
     res.render('carrito.ejs', { result })
 })
 

@@ -4,7 +4,7 @@ class Prods {
     constructor(archivo) {
         this.id = 0
         this.archivo = archivo
-        this.timestamp = new Date().toLocaleTimeString()
+        this.timestamp = new Date().toLocaleString() 
         this.products = []
     }
 
@@ -29,10 +29,14 @@ class Prods {
         }
     }
     addProduct(product) {
-        this.id++
         const leer = this.getProduct()
-        console.log(this.id)
+        if (leer.length < 1) {
+            this.id = 1
+        } else {
+            this.id = leer.length + 1
+        }
         product['id'] = this.id
+        product['timestamp'] = this.timestamp
         this.products.push(product)
         this.write()
         return leer
@@ -47,7 +51,6 @@ class Prods {
     editProduct(id, product) {
         const leer = this.getProduct()
         const index = this.products.findIndex(index => index.id == id);
-        console.log(index)
         product['id'] = id;
         this.products.splice(index, 1, product);
         this.write()
@@ -57,7 +60,6 @@ class Prods {
     deleteProduct(id) {
         const leer = this.getProduct()
         const index = this.products.findIndex(index => index.id == id);
-        console.log(index)
         this.products.splice(index, 1);
         this.write();
         return leer
