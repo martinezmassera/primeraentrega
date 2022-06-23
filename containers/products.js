@@ -4,7 +4,7 @@ class Prods {
     constructor(archivo) {
         this.id = 0
         this.archivo = archivo
-        this.timestamp = new Date().toLocaleString() 
+        this.timestamp = new Date().toLocaleString('es-AR') 
         this.products = []
     }
 

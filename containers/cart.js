@@ -3,7 +3,7 @@ const fs = require('fs')
 class NewCart {
     constructor(id) {
         this.id = id
-        this.timestamp = new Date().toLocaleString()
+        this.timestamp = new Date().toLocaleString('es-AR')
         this.products = []
     }
 }
@@ -58,7 +58,7 @@ class Cart {
             } else {
                 this.id_prod = cart.products.length + 1
             }
-            product['timestamp'] = new Date().toLocaleString()
+            product['timestamp'] = new Date().toLocaleString('es-AR')
             product['id'] = this.id_prod;
             cart.products.push(product)
             this.write()
