@@ -62,10 +62,11 @@
                             <h1>CARRITO NO EXISTE</h1>
                             <%} else {%>
                                 <% result.forEach(element=> { %>
-                                    <a href="/productos" class="Max btn btn-primary">Add ></a>
+                                    
                                     <tr class="accordion-header" id="headingOne" class="accordion-button"
                                         data-bs-toggle="collapse" data-bs-target="#collapse<%= element.id %>"
                                         aria-expanded="true" aria-controls="collapseOne">
+                                        <a href="/productos" class="Max btn btn-primary">Add ></a>
                                         <th class="border-0 ps-4"></th>
                                         <td class="p-4 pe-3 ps-0">
                                             <%= element.id %>
