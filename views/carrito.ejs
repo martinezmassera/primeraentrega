@@ -158,8 +158,7 @@
                 btn.onclick = (e) => {
                     const id = e.target.getAttribute('data-id')
                     console.log("A guardar el id ", id)
-                    
-                    console.log(e)
+                    e.preventDefault();
                     fetch('/cart/:id/products', {
                         method: 'POST',
                         headers: {

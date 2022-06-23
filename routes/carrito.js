@@ -11,7 +11,7 @@ router.use(express.urlencoded({ extended: true }))
 
 router.get('/', (req, res) => {
     const result = venta.getCart()
-    res.render('elcarrito.ejs', { result })
+    res.render('carrito.ejs', { result })
 })
 router.post('/', (req, res) => {
     let cart = venta.createCart()
@@ -36,7 +36,7 @@ router.get('/:id/products', (req, res) => {
     const result = venta.getCartProducts(idCart);
     console.log(result)
     // res.send('ok')
-    res.render('elcarrito.ejs', { result })
+    res.render('carrito.ejs', { result })
 })
 
 router.post('/:id/products', (req, res) => {
