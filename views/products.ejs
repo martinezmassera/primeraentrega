@@ -55,7 +55,7 @@
                         <div class="edit" style="display: none;">
                             <a class="btn btn-primary" href="/productos/edit/<%= element.id %>">edit</a>
                             <a class="btn btn-primary" data-id="<%= element.id %>" id="del">delete</a>
-                            <a data-id="<%= element.id %>" class="Max add btn-primary">Add ></a>
+                            <a data-id="<%= element.id %>" class="Max btn btn-primary">Add ></a>
                         </div>
                     </div>
                 </div>
@@ -118,20 +118,14 @@
             console.log("A borrar el id ", id)
             console.log(e)
             e.preventDefault();
-            fetch('/' + id, {
-                method: 'DELETE',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            })
+            fetch('/productos/'+id, { method: 'DELETE' })
                 .then(response => {
                     console.log(response)
                 })
                 .then(data => {
-                    window.location = '/productos';
-                })
-                .catch(e => alert(e))
+                        window.location = '/productos';})
+            .catch (e => alert(e))
+               
         }
 
     </script>

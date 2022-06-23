@@ -63,7 +63,7 @@ router.delete('/:id', (req, res) => {
     if (req.headers.admin === 'false') {
         return res.end(`{ error : -1, descripcion: ruta "${req.params[0]}" metodo "${req.method}" no no autorizada}`)
     } else {
-        const id = req.params.id
+        const id = req.params.id || req.body.id
         res.send(prod.deleteProduct(id))
     }
 })
